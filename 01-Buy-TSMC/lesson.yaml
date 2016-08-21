@@ -1,9 +1,7 @@
 - Class: meta
-  Course: 01-Buy-TSMC
-  Lesson: FlippedTradingClassroom
+  Course: FlippedTradingClassroom
+  Lesson: 01-Buy-TSMC
   Author: Wush Wu and <your name>
   Type: Standard
   Organization: 
   Version: 101.3.1.7
-
-- 

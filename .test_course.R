@@ -78,14 +78,12 @@ test_lesson = function(lesson_dir){
 }
 
 course_name <- basename(getwd())
+swirl::uninstall_all_courses(TRUE)
 setwd("..");install_course_directory(course_name);setwd(course_name)
 course_list <- list.dirs(".", recursive = FALSE)
 course_list <- grep("^\\./(\\d{2})|(Project)|(Optional)-", course_list, value = TRUE)
 course_list <- substring(course_list, 3, nchar(course_list))
 course_list <- grep("^[^\\.]", course_list, value = TRUE)
-course_list <- setdiff(course_list, c("Project-ROpenData-DataTaipei", "Optional-RDataMining-01-Clustering", 
-                                      "Optional-RDataMining-02-Classification", "Optional-RDataMining-03-Association-Rule",
-                                      "Optional-RDataMining-04-Text-Mining"))
 
 result.path <- ".result.csv"
 result <- if (file.exists(result.path) && argv == "commit") {
@@ -107,20 +105,13 @@ for(course in course_list) {
       next
     }
   }
-  if (course %in% "Optional-RDataMining-02-Classification") {
-    if (Sys.info()["sysname"] == "Windows") {
-      Sys.setlocale(locale = "cht")
-    } 
-    test_lesson(course)
-  } else {
-    if (Sys.info()["sysname"] == "Windows") {
-      for(locale in c("Chinese", "cht")) {
-        Sys.setlocale(locale = locale)
-        test_lesson(course)
-      }
-    } else {
+  if (Sys.info()["sysname"] == "Windows") {
+    for(locale in c("Chinese", "cht")) {
+      Sys.setlocale(locale = locale)
       test_lesson(course)
     }
+  } else {
+    test_lesson(course)
   }
 
   ## update result
