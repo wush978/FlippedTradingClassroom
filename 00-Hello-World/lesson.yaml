@@ -1,0 +1,19 @@
+- Class: meta
+  Course: 00-Hello-World
+  Lesson: FlippedTradingClassroom
+  Author: Wush Wu and <your name>
+  Type: Standard
+  Organization: 
+  Version: 101.3.1.7
+
+- Class: text
+  Output: |
+    能夠讀到這段中文字的同學，可以直接輸入enter進入下一個關卡。
+    If you are windows user and you cannot read the chinese characters, please
+    press `ESC` to exit swirl and execute the command `Sys.setlocale(locale = "cht")`. 
+- Class: text
+  Output: |
+    這個課程的目的是為了測試同學的環境是否正常，能否進行本教材。
+    測試之後，我們會跟同學說明本教材提供的一些功能。在課程進行中，
+    同學如果看到最後有：`...`，代表這是一個說明關卡，在閱讀說明
+    文字之後可以輸入enter進入下一個關卡。
