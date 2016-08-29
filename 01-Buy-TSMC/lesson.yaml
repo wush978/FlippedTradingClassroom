@@ -8,25 +8,12 @@
 
 - Class: text
   Output: |
-    在R語言中，每一個指令不是一個expression，就是一個assignment。
-- Class: text
-  Output: |
-    舉例來說，`1 + 2 + 3`就是一個expression的指令。
-- Class: text
-  Output: |
-    `x <- 2`是一個assignment的指令，我們將數字2給assign至x變數中。
-    請同學輸入`x <- 2`
-  CorrectAnswer: x <- 2
-  AnswerTests: omnitest('x <- 2')
-  Hint: x <- 2
-- Class: text
-  Output: |
     R軟體的強大在於有許多開發者依據其專業領域去撰寫各式各樣的套件(packages)，
     以利R語言的使用者使用。
 - Class: text
   Output: |
     在使用套件之前，我們必須先安裝套件，請同學輸入：`install.packages("quantmod")`
-  CorrectAnswer: install.packages("quantmod")
+  CorrectAnswer: check_then_install("quantmod", "0.4-5")
   AnswerTests: test_package_version("quantmod", "0.4-5")
   Hint: install.packages("quantmod")
 - Class: text
@@ -40,21 +27,30 @@
   Hint: library(quantmod)
 - Class: text
   Output: |
+    quantmod套件可以讓我們一行從線上資料庫讀取台灣股票的日資料
+- Class: text
+  Output: |
+    <請說明getSymbols>
+- Class: cmd_question
+  Output: |
+    <讓同學用getSymbols下載資料，並放到變數STK中>
+- Class: text
+  Output: |
     我們在讀取資料時，會使用`head()`函數與`tail()`函數來觀察一下資料的長相。
 - Class: text
   Output: |
     `head()`函數為幫助我們觀看資料的前n筆資料，n預設為6筆。
-    這裡我們利用著名的iris檔案做為練習，請輸入`head(iris)`觀察iris前6筆資料。
-  CorrectAnswer: head(iris)
-  AnswerTests: omnitest('head(iris)')
-  Hint: head(iris)
+    這裡我們利用剛剛下載的STK做為練習，請輸入`head(STK)`觀察iris前6筆資料。
+  CorrectAnswer: head(STK)
+  AnswerTests: omnitest('head(STK)')
+  Hint: head(STK)
 - Class: text
   Output: |
-    若輸入`head(iris, 10)`則會顯示出iris前10筆資料，以此類推，依照需求設定參數值。
+    若輸入`head(STK, 10)`則會顯示出STK前10筆資料，以此類推，依照需求設定參數值。
 - Class: text
   Output: |
     `tail()`函數為幫助我們觀看資料的最後n筆資料，n預設為6筆。
-    請同學輸入`tail(iris)`觀察iris最後6筆資料。
+    請同學輸入`tail(STK)`觀察STK最後6筆資料。
   CorrectAnswer: tail(iris)
   AnswerTests: omnitest('tail(iris)')
   Hint: tail(iris)
@@ -67,23 +63,32 @@
     故`head()`與`tail()`是在我們初步觀察資料時，非常實用的兩個函數。
 - Class: text
   Output: |
+    <講解chartSeries>
+- Class: cmd_question
+  Output: |
+    <讓同學練習chartSeries>
+- Class: text
+  Output: |
     在R中，資料可以有許多不同的呈現樣貌，例如：numeric、character、matrix、data.frame等，
     而`class()`函數可以幫助我們了解資料的型態。
 - Class: text
   Output: |
-    我們來看看iris的資料型態為何？請同學輸入`class(iris)`
-  CorrectAnswer: class(iris)
-  AnswerTests: omnitest('class(iris)')
-  Hint: class(iris)
+    我們來看看STK的資料型態為何？請同學輸入`class(STK)`
+  CorrectAnswer: class(STK)
+  AnswerTests: omnitest('class(STK)')
+  Hint: class(STK)
 - Class: text
   Output: |
-    結果顯示iris的資料型態為data.frame。
+    結果顯示STK的資料型態為<STK的型態>。
 - Class: text
   Output: |
-    資料型態間可以透過函數進行轉換，例如：as.numeric、as.character、as.matric等。
+    資料型態間可以透過函數進行轉換，例如：as.numeric、as.character、as.matrix等。
 - Class: text
   Output: |
-    接著，我們將iris資料型態由data.frame轉換為matrix(矩陣)。
+    <講解to.weekly>
+- Class: text
+  Output: |
+    接著，我們將STK資料型態由data.frame轉換為matrix(矩陣)。
     請同學輸入as.matrix(iris)
   CorrectAnswer: as.matrix(iris)
   AnswerTests: omnitest('as.matrix(iris)')
@@ -151,6 +156,7 @@
     當我們不曉得函數的使用方式時可以這樣與R求救。
 - Class: text
   Output: |
+    <這個範例能不能具體的拿最後的程式碼做說明呢?>
     請同學輸入`paste(c("Amber", "Jenny", "Shelly"), 97:99, sep = ":")`
   CorrectAnswer: paste(c("Amber", "Jenny", "Shelly"), 97:99, sep = ":")
   AnswerTests: omnitest('paste(c("Amber", "Jenny", "Shelly"), 97:99, sep = ":")')
@@ -161,3 +167,19 @@
 - Class: text
   Output: |
     基本函數的介紹就到這裡為止，接下來的課程還會出現許多新函數，我們會在課程中詳細介紹。
+- Class: text
+  Output: |
+    <講解profit>
+- Class: text
+  Output: |
+    <講解winRate>
+- Class: text
+  Output: |
+    <講解Profit Factor>
+- Class: script
+  Output: |
+    <Script檔案的開啟>
+  Script: 0_1BuyTSMC.R
+  AnswerTests: hw_test()
+
+  
