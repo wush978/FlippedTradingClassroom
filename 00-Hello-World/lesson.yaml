@@ -1,7 +1,7 @@
 - Class: meta
   Course: FlippedTradingClassroom
   Lesson: 00-Hello-World
-  Author: Wush Wu and <your name>
+  Author: Wush Wu and GU Chen
   Type: Standard
   Organization: 
   Version: 101.3.1.7
@@ -17,3 +17,158 @@
     測試之後，我們會跟同學說明本教材提供的一些功能。在課程進行中，
     同學如果看到最後有：`...`，代表這是一個說明關卡，在閱讀說明
     文字之後可以輸入enter進入下一個關卡。
+- Class: text
+  Output: |
+    在R語言中，每一個指令不是一個expression，就是一個assignment。
+- Class: text
+  Output: |
+    舉例來說，`1 + 2 + 3`就是一個expression的指令。
+- Class: text
+  Output: |
+    `x <- 2`是一個assignment的指令，我們將數字2給assign至x變數中。
+    請同學輸入`x <- 2`
+  CorrectAnswer: x <- 2
+  AnswerTests: omnitest('x <- 2')
+  Hint: x <- 2
+- Class: text
+  Output: |
+    R軟體的強大在於有許多開發者依據其專業領域去撰寫各式各樣的套件(packages)，
+    以利R語言的使用者使用。
+- Class: text
+  Output: |
+    在使用套件之前，我們必須先安裝套件，請同學輸入：`install.packages("quantmod")`
+  CorrectAnswer: install.packages("quantmod")
+  AnswerTests: test_package_version("quantmod", "0.4-5")
+  Hint: install.packages("quantmod")
+- Class: text
+  Output: |
+    安裝好的套件還無法直接使用，必須要將其載入R軟體中。
+- Class: text
+  Output: |
+    接著，請同學載入剛剛安裝好的套件，請輸入`library(quantmod)`
+  CorrectAnswer: library(quantmod)
+  AnswerTests: test_search_path("quantmod")
+  Hint: library(quantmod)
+- Class: text
+  Output: |
+    我們在讀取資料時，會使用`head()`函數與`tail()`函數來觀察一下資料的長相。
+- Class: text
+  Output: |
+    `head()`函數為幫助我們觀看資料的前n筆資料，n預設為6筆。
+    這裡我們利用著名的iris檔案做為練習，請輸入`head(iris)`觀察iris前6筆資料。
+  CorrectAnswer: head(iris)
+  AnswerTests: omnitest('head(iris)')
+  Hint: head(iris)
+- Class: text
+  Output: |
+    若輸入`head(iris, 10)`則會顯示出iris前10筆資料，以此類推，依照需求設定參數值。
+- Class: text
+  Output: |
+    `tail()`函數為幫助我們觀看資料的最後n筆資料，n預設為6筆。
+    請同學輸入`tail(iris)`觀察iris最後6筆資料。
+  CorrectAnswer: tail(iris)
+  AnswerTests: omnitest('tail(iris)')
+  Hint: tail(iris)
+- Class: text
+  Output: |
+    為什麼不觀察前幾筆資料就好了？
+- Class: text
+  Output: |
+    依照我們在實務上的經驗，前幾筆資料的長相不見得與後幾筆的資料長相一樣，
+    故`head()`與`tail()`是在我們初步觀察資料時，非常實用的兩個函數。
+- Class: text
+  Output: |
+    在R中，資料可以有許多不同的呈現樣貌，例如：numeric、character、matrix、data.frame等，
+    而`class()`函數可以幫助我們了解資料的型態。
+- Class: text
+  Output: |
+    我們來看看iris的資料型態為何？請同學輸入`class(iris)`
+  CorrectAnswer: class(iris)
+  AnswerTests: omnitest('class(iris)')
+  Hint: class(iris)
+- Class: text
+  Output: |
+    結果顯示iris的資料型態為data.frame。
+- Class: text
+  Output: |
+    資料型態間可以透過函數進行轉換，例如：as.numeric、as.character、as.matric等。
+- Class: text
+  Output: |
+    接著，我們將iris資料型態由data.frame轉換為matrix(矩陣)。
+    請同學輸入as.matrix(iris)
+  CorrectAnswer: as.matrix(iris)
+  AnswerTests: omnitest('as.matrix(iris)')
+  Hint: as.matrix(iris)
+- Class: text
+  Output: |
+    我們可以利用`rownames()`與`colnames()`擷取出資料集的列名稱或行名稱。
+- Class: text
+  Output: |
+    首先，我們利用`rownames()`擷取出資料集的列名稱，並且將其存入row變數中。
+    請同學輸入`row <- rownames(iris)`
+  CorrectAnswer: row <- rownames(iris)
+  AnswerTests: omnitest('row <- rownames(iris)')
+  Hint: row <- rownames(iris)
+- Class: text
+  Output: |
+    我們可以利用`length()`函數來計算R物件的長度，請同學輸入`length(row)`
+  CorrectAnswer: length(row)
+  AnswerTests: omnitest('length(row)')
+  Hint: length(row)
+- Class: text
+  Output: |
+    假設我們要對向量中的物件進行命名，`setNames()`函數，可以幫助我們做到這點。
+- Class: text
+  Output: |
+    舉例來說，我們今天要將97、98、99三個成績對應到該同學的名字。
+    請同學輸入`setNames(97:99, c("Amber", "Jenny", "Shelly"))`
+  CorrectAnswer: setNames(97:99, c("Amber", "Jenny", "Shelly"))
+  AnswerTests: omnitest('setNames(97:99, c("Amber", "Jenny", "Shelly"))')
+  Hint: setNames(97:99, c("Amber", "Jenny", "Shelly"))
+- Class: text
+  Output: |
+    這個指令等同於以下指令，請同學自行參考練習。
+    `score <- 97:99`
+    `names(score) <- c("Amber", "Jenny", "Shelly")`
+    `score`
+- Class: text
+  Output: |
+    這裡要跟各位同學介紹兩個函數，一個是加總函數`sum()`，一個為`cumsum()`。
+- Class: text
+  Output: |
+    我們直接輸入例子來觀察結果，請同學輸入`sum(1:3)`
+  CorrectAnswer: sum(1:3)
+  AnswerTests: omnitest('sum(1:3)')
+  Hint: sum(1:3)
+- Class: text
+  Output: |
+    接著請同學輸入`cumsum(1:3)`
+  CorrectAnswer: cumsum(1:3)
+  AnswerTests: omnitest('cumsum(1:3)')
+  Hint: cumsum(1:3)
+- Class: text
+  Output: |
+    `sum(1:3)`為對1、2、3進行加總，意即1+2+3。
+- Class: text
+  Output: |
+    `cumsum(1:3)`為一累加函數，從第一個物件開始進行累加的動作，
+    意即1、1+2、1+2+3。
+- Class: text
+  Output: |
+    最後我們要介紹一個可以幫助我們黏貼字串的`paste()`函數。
+- Class: text
+  Output: |
+    請同學輸入`?paste`。問號的意義等同於help()，
+    當我們不曉得函數的使用方式時可以這樣與R求救。
+- Class: text
+  Output: |
+    請同學輸入`paste(c("Amber", "Jenny", "Shelly"), 97:99, sep = ":")`
+  CorrectAnswer: paste(c("Amber", "Jenny", "Shelly"), 97:99, sep = ":")
+  AnswerTests: omnitest('paste(c("Amber", "Jenny", "Shelly"), 97:99, sep = ":")')
+  Hint: paste(c("Amber", "Jenny", "Shelly"), 97:99, sep = ":")
+- Class: text
+  Output: |
+    上述指令為我們將三位同學的名稱以及其對應的考試成績利用":"進行黏貼。
+- Class: text
+  Output: |
+    基本函數的介紹就到這裡為止，接下來的課程還會出現許多新函數，我們會在課程中詳細介紹。
