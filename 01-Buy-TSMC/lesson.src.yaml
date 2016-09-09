@@ -3,8 +3,9 @@
   Lesson: 01-Buy-TSMC
   Author: Wush Wu and GU Chen
   Type: Standard
-  Organization: ~
+  Organization: 
   Version: 101.3.1.7
+
 - Class: text
   Output: |
     R軟體的強大在於有許多開發者依據其專業領域去撰寫各式各樣的套件(packages)，
@@ -31,9 +32,6 @@
 - Class: cmd_question
   Output: |
     請同學輸入：`?getSymbols`打開這個函數的說明頁面。
-  CorrectAnswer: ?getSymbols
-  AnswerTests: omnitest('?getSymbols')
-  Hint: ?getSymbols
 - Class: text
   Output: |
     一般來說，R 的功能都是透過函數來實現。舉例來說，下載資料是`getSymbols`，看資料可以用`head`與`tail`。
@@ -45,8 +43,9 @@
   Output: |
     在Help中，R在`Description`中會顯示函數的功能。
 - Class: text
-  Output: "在Help中，R在`Usage`中會顯示getSymbols的函數定義：`getSymbols(Symbols = NULL, \nenv =
-    parent.frame(),...`。\n"
+  Output: |
+    在Help中，R在`Usage`中會顯示getSymbols的函數定義：`getSymbols(Symbols = NULL, 
+    env = parent.frame(),...`。
 - Class: text
   Output: |
     在Help中，R在`Arguments`中會顯示參數代表的型態與意義，例如`Symbols`必須是一個字串向量，並且代表要載入的符號。
@@ -59,9 +58,6 @@
   Output: |
     請同學輸入：`getSymbols`，R會印出函數的原始碼。當同學對R 越來越熟悉之後，一些很細節的問題，常常可以透過閱讀原始碼
     來解決，甚至是參考原始碼後寫出符合自己需求的函數。
-  CorrectAnswer: getSymbols
-  AnswerTests: omnitest('getSymbols')
-  Hint: getSymbols
 - Class: text
   Output: |
     我們回到`Usage`。函數的定義中，會顯示「參數名稱」，或是「參數名稱」與「預設參數」。
@@ -93,7 +89,7 @@
   Output: |
     請同學參考ˋUsage`的內容作答。請問當使用者輸入：`getSymbols(globalenv(), Symbols = "^TWII")`後，`globalenv()`會對應到那一個參數？
   AnswerChoices: Symbols;env;reload.Symbols;src
-  CorrectAnswer: env
+  CorrectAnswer: "env"
   AnswerTests: omnitest(correctVal = "env")
   Hint: |
     使用者有給參數名稱時，R會優先採用，再看位置。但是參數的名稱不可以相同(第一個位置的參數是Symbols，重複了)。如果有撞到，
@@ -103,8 +99,6 @@
     `getSymbols`函數可以從網路下載日資料。請同學輸入：`getSymbols("2330.tw")`從Yahoo下載股票代號為2330的股價歷史資料。
     這個關卡需要有網路才能通過。
   CorrectAnswer: getSymbols("2330.tw")
-  AnswerTests: omnitest('getSymbols("2330.tw")')
-  Hint: getSymbols("2330.tw")
 - Class: text
   Output: |
     同學會看到螢幕上顯示一個字串：`"2330.TW"`。這代表下載成功，並且R把資料匯入到變數`2330.TW`中。
@@ -116,15 +110,11 @@
   Output: |
     所以我們需要透過`get`函數來讀取這類名稱特殊的變數。請同學輸入`get("2330.TW")`
   CorrectAnswer: get("2330.TW")
-  AnswerTests: omnitest('get("2330.TW")')
-  Hint: get("2330.TW")
 - Class: cmd_question
   Output: |
     每次讀取變數都要輸入`get("2330.TW")`的話，有點麻煩，所以我們把這個變數指定到另一個名稱：`STK`。
     請同學輸入：`STK = get("2330.TW")`
   CorrectAnswer: STK = get("2330.TW")
-  AnswerTests: omnitest('STK = get("2330.TW")')
-  Hint: STK = get("2330.TW")
 - Class: text
   Output: |
     我們在讀取資料後，會使用`head()`函數與`tail()`函數來觀察一下資料的長相。
@@ -136,16 +126,11 @@
 - Class: cmd_question
   Output: |
     若輸入`head(STK, 10)`則會顯示出STK前10筆資料。請同學試試看。
-  CorrectAnswer: head(STK, 10)
-  AnswerTests: omnitest('head(STK, 10)')
-  Hint: head(STK, 10)
 - Class: cmd_question
   Output: |
     `tail()`函數為幫助我們觀看資料的最後n筆資料，n預設為6筆。
     請同學輸入`tail(STK)`觀察STK最後6筆資料。
   CorrectAnswer: tail(STK)
-  AnswerTests: omnitest('tail(STK)')
-  Hint: tail(STK)
 - Class: text
   Output: |
     為什麼不觀察前幾筆資料就好了？
@@ -164,30 +149,23 @@
 - Class: cmd_question
   Output: |
     請同學輸入：`?chartSeries`看看說明文件。
-  CorrectAnswer: ?chartSeries
-  AnswerTests: omnitest('?chartSeries')
-  Hint: ?chartSeries
 - Class: mult_question
   Output: |
     請問同學，如果我們輸入：`chartSeries(STK)`，`STK`會對應到那一個參數？
   AnswerChoices: x;type;subset
-  CorrectAnswer: x
+  CorrectAnswer: "x"
   AnswerTests: omnitest(correctVal = "x")
   Hint: 請參考`Usage`
 - Class: mult_question
   Output: |
     請問同學，根據作者的說明，參數`x`代表？
-  AnswerChoices: an OHLC object - see details;style of chart to draw;xts style date
-    subsetting argument
-  CorrectAnswer: an OHLC object - see details
+  AnswerChoices: an OHLC object - see details;style of chart to draw;xts style date subsetting argument
+  CorrectAnswer: "an OHLC object - see details"
   AnswerTests: omnitest(correctVal = "an OHLC object - see details")
   Hint: 請參考`Arguments`
 - Class: cmd_question
   Output: |
     有時候，閱讀細節不如直接跑程式：請同學直接輸入`chartSeries(STK)`
-  CorrectAnswer: chartSeries(STK)
-  AnswerTests: omnitest('chartSeries(STK)')
-  Hint: chartSeries(STK)
 - Class: text
   Output: |
     `chartSeries`的功能就是畫出股價的變化。
@@ -214,14 +192,9 @@
   Output: |
     xts套件提供`to.weekly`函數可以讓我們快速做轉換。請同學輸入：`STK.week = to.weekly(STK)`。
   CorrectAnswer: STK.week = to.weekly(STK)
-  AnswerTests: omnitest('STK.week = to.weekly(STK)')
-  Hint: STK.week = to.weekly(STK)
 - Class: cmd_question
   Output: |
     接著請同學輸入`STK.week`看一看轉換後的結果。
-  CorrectAnswer: STK.week
-  AnswerTests: omnitest('STK.week')
-  Hint: STK.week
 - Class: text
   Output: |
     同學可以注意資料的日期間隔，是不是由日資料轉換成周資料了呢？
@@ -233,37 +206,24 @@
     首先，我們要建立`profit`向量。他的長度與`STK.week`的資料數相同。因為`STK.week`是一個矩陣，每一列代表一筆資料，
     所以在R 裡面我們可以用`nrow(STK.week)`取得列數，也就是資料的個數。請同學試試看。
   CorrectAnswer: nrow(STK.week)
-  AnswerTests: omnitest('nrow(STK.week)')
-  Hint: nrow(STK.week)
 - Class: cmd_question
   Output: |
     如果我們要建立一個長度和`STK.week`的資料個數的向量，可以用`numeric(nrow(STK.week))`來建立。
     這裡R 會呼叫函數兩次。第一次會先執行`nrow(STK.week)`查詢資料筆數，第二次則是透過`numeric(...)`來建立跟資料筆數
     一樣長的函數。請同學試著執行看`profit = numeric(nrow(STK.week))`。
   CorrectAnswer: profit = numeric(nrow(STK.week))
-  AnswerTests: omnitest('profit = numeric(nrow(STK.week))')
-  Hint: profit = numeric(nrow(STK.week))
 - Class: text
   Output: |
     `numeric`的輸出向量，這裡的值都是0。我們還需要用迴圈來計算每週的收穫後填入向量。
 - Class: cmd_question
   Output: |
     首先請同學輸入：`i = 1`。這代表第一筆資料。
-  CorrectAnswer: i = 1
-  AnswerTests: omnitest('i = 1')
-  Hint: i = 1
 - Class: cmd_question
   Output: |
     我們可以利用`STK.week[i,4] - STK.week[i,1]`計算第一周的獲利。請同學試試看。
-  CorrectAnswer: STK.week[i,4] - STK.week[i,1]
-  AnswerTests: omnitest('STK.week[i,4] - STK.week[i,1]')
-  Hint: STK.week[i,4] - STK.week[i,1]
 - Class: cmd_question
   Output: |
     我們可以用`profit[i] = STK.week[i,4] - STK.week[i,1]`來將第一周的獲利存到profit的第一個值。請同學試試看。
-  CorrectAnswer: profit[i] = STK.week[i,4] - STK.week[i,1]
-  AnswerTests: omnitest('profit[i] = STK.week[i,4] - STK.week[i,1]')
-  Hint: profit[i] = STK.week[i,4] - STK.week[i,1]
 - Class: text
   Output: |
     接著，只要`i`能夠從1, 2, ... 一路跑到`nrow(STK.week)`，我們就把profit的值算完了。
@@ -272,8 +232,6 @@
     我們可以用`1:nrow(STK.week)`建立一個序列，好告訴R說等等`i`要依序是1, 2, ..., 到`nrow(STK.week)`。
     請同學試著建立這個序列。
   CorrectAnswer: 1:nrow(STK.week)
-  AnswerTests: omnitest('1:nrow(STK.week)')
-  Hint: 1:nrow(STK.week)
 - Class: text
   Output: |
     接著我們只要透過`for(i in 1:nrow(STK.week)) {...}`的語法，，R 就會執行大括號`{...}`間的程式碼`nrow(STK.week)`次。
@@ -306,9 +264,6 @@
 - Class: cmd_question
   Output: |
     請同學輸入：`plot(cumsum(profit),type="l")`
-  CorrectAnswer: plot(cumsum(profit),type="l")
-  AnswerTests: omnitest('plot(cumsum(profit),type="l")')
-  Hint: plot(cumsum(profit),type="l")
 - Class: text
   Output: |
     如果我們輸入一個序列，並且給定參數`type = "l"`後，R 就會以相同間隔，把這個序列當成連續的折線圖畫出來。
@@ -327,9 +282,6 @@
 - Class: cmd_question
   Output: |
     請同學輸入`paste("Profit:",sum(profit))`
-  CorrectAnswer: paste("Profit:",sum(profit))
-  AnswerTests: omnitest('paste("Profit:",sum(profit))')
-  Hint: paste("Profit:",sum(profit))
 - Class: text
   Output: |
     R 會先把`paste`的每個參數都轉換成字串。`"Profit:"`已經是字串，所以不便。而`sum(profit)`是個數字，會轉換成字串。
@@ -343,4 +295,3 @@
     結束之後，同學可以輸入`submit()`關閉這個關卡。
   Script: 0_1BuyTSMC.R
   AnswerTests: hw_test()
-
