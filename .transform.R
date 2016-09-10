@@ -1,4 +1,7 @@
 cat("Loading transform\n")
+
+
+#' 1. Transform xxx.src.yaml to xxx.yaml under the lesson directory which is choosen by `swirlify::set_lesson`
 transform <- function() {
   path <- getOption("swirlify_lesson_file_path")
   src.path <- gsub("yaml", "src.yaml", path)
@@ -28,6 +31,9 @@ transform <- function() {
   write(yaml::as.yaml(parsed), file = path)
 }
 
+#' 1. Scan all lessons
+#' 2. Transform all xxx.src.yaml to xxx.yaml
+#' 3. Set the lesson (please check to `swirlify::set_lesson`)
 transform_all <- function() {
   course_list <- dir(".", "lesson.yaml", recursive = TRUE)
   origin_course <- getOption("swirlify_lesson_file_path")
