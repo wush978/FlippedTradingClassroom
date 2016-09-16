@@ -18,7 +18,7 @@
 - Class: text
   Output: |
     安裝好的套件還無法直接使用，必須要將其載入R軟體中。
-- Class: text
+- Class: cmd_question
   Output: |
     接著，請同學載入剛剛安裝好的套件，請輸入`library(quantmod)`
   CorrectAnswer: library(quantmod)
