@@ -10,7 +10,7 @@
   Output: |
     R軟體的強大在於有許多開發者依據其專業領域去撰寫各式各樣的套件(packages)，
     以利R語言的使用者使用。
-- Class: text
+- Class: cmd_question
   Output: |
     在使用套件之前，我們必須先安裝套件，請同學輸入：`install.packages("quantmod")`
   CorrectAnswer: check_then_install("quantmod", "0.4-5")
@@ -19,7 +19,7 @@
 - Class: text
   Output: |
     安裝好的套件還無法直接使用，必須要將其載入R軟體中。
-- Class: text
+- Class: cmd_question
   Output: |
     接著，請同學載入剛剛安裝好的套件，請輸入`library(quantmod)`
   CorrectAnswer: library(quantmod)
