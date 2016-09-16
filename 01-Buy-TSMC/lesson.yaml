@@ -235,15 +235,20 @@
   CorrectAnswer: nrow(STK.week)
   AnswerTests: omnitest('nrow(STK.week)')
   Hint: nrow(STK.week)
+- Class: text
+  Output: |
+    如果我們要建立一個長度和`STK.week`的資料數相同的向量，可以用`numeric(nrow(STK.week))`來建立。
+    這裡R 會呼叫函數兩次。第一次會先執行`nrow(STK.week)`查詢資料筆數，第二次則是透過`numeric(...)`來建立跟資料筆數
+    一樣長的函數。
 - Class: cmd_question
   Output: |
-    如果我們要建立一個長度和`STK.week`的資料個數的向量，可以用`numeric(nrow(STK.week))`來建立。
-    這裡R 會呼叫函數兩次。第一次會先執行`nrow(STK.week)`查詢資料筆數，第二次則是透過`numeric(...)`來建立跟資料筆數
-    一樣長的函數。請同學試著執行看`profit = numeric(nrow(STK.week))`。
-  CorrectAnswer: profit = numeric(nrow(STK.week))
-  AnswerTests: omnitest('profit = numeric(nrow(STK.week))')
-  Hint: profit = numeric(nrow(STK.week))
-- Class: text
+    對向量名稱進行命名，可以幫助我們在之後存取資料時方便許多。
+    `setNames(object = nm, nm)`這個函數可以幫助我們做到這件事，
+    其函數的功能為將向量object以向量nm進行命名。
+    請同學試著執行看`profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))`。
+  CorrectAnswer: profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))
+  AnswerTests: omnitest('profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))')
+  Hint: profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))
   Output: |
     `numeric`的輸出向量，這裡的值都是0。我們還需要用迴圈來計算每週的收穫後填入向量。
 - Class: cmd_question
