@@ -249,6 +249,7 @@
   CorrectAnswer: profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))
   AnswerTests: omnitest('profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))')
   Hint: profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))
+- Class: text
   Output: |
     `numeric`的輸出向量，這裡的值都是0。我們還需要用迴圈來計算每週的收穫後填入向量。
 - Class: cmd_question
