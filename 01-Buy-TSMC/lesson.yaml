@@ -242,9 +242,9 @@
     一樣長的函數。
 - Class: cmd_question
   Output: |
-    對向量名稱進行命名，可以幫助我們在之後存取資料時方便許多。
-    `setNames(object = nm, nm)`這個函數可以幫助我們做到這件事，
-    其函數的功能為將向量object以向量nm進行命名。
+    命名向量中的元素，可以幫助我們在之後存取資料時方便許多。
+    `setNames()`這個函數可以幫助我們做到這件事，
+    第一個參數放入欲命名的向量，第二個參數放入向量元素的名稱。
     請同學試著執行看`profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))`。
   CorrectAnswer: profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))
   AnswerTests: omnitest('profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))')
