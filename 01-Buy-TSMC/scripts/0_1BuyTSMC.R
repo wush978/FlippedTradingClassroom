@@ -8,7 +8,7 @@ chartSeries(STK)
 
 STK.week = to.weekly(STK)
 
-profit = numeric(nrow(STK.week))
+profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))
 
 for (i in 1:nrow(STK.week)) {	
 	profit[i]=STK.week[i,4]-STK.week[i,1]
