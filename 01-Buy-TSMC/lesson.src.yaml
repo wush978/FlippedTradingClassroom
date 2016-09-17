@@ -206,12 +206,18 @@
     首先，我們要建立`profit`向量。他的長度與`STK.week`的資料數相同。因為`STK.week`是一個矩陣，每一列代表一筆資料，
     所以在R 裡面我們可以用`nrow(STK.week)`取得列數，也就是資料的個數。請同學試試看。
   CorrectAnswer: nrow(STK.week)
+- Class: text
+  Output: |
+    如果我們要建立一個長度和`STK.week`的資料數相同的向量，可以用`numeric(nrow(STK.week))`來建立。
+    這裡R 會呼叫函數兩次。第一次會先執行`nrow(STK.week)`查詢資料筆數，第二次則是透過`numeric(...)`來建立跟資料筆數
+    一樣長的函數。
 - Class: cmd_question
   Output: |
-    如果我們要建立一個長度和`STK.week`的資料個數的向量，可以用`numeric(nrow(STK.week))`來建立。
-    這裡R 會呼叫函數兩次。第一次會先執行`nrow(STK.week)`查詢資料筆數，第二次則是透過`numeric(...)`來建立跟資料筆數
-    一樣長的函數。請同學試著執行看`profit = numeric(nrow(STK.week))`。
-  CorrectAnswer: profit = numeric(nrow(STK.week))
+    命名向量中的元素，可以幫助我們在之後存取資料時方便許多。
+    `setNames()`這個函數可以幫助我們做到這件事，
+    第一個參數放入欲命名的向量，第二個參數放入向量元素的名稱。
+    請同學試著執行看`profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))`。
+  CorrectAnswer: profit = setNames(numeric(nrow(STK.week)), rownames(STK.week))
 - Class: text
   Output: |
     `numeric`的輸出向量，這裡的值都是0。我們還需要用迴圈來計算每週的收穫後填入向量。
